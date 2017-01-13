@@ -1,0 +1,18 @@
+{
+  "name": "familyphotos",
+  "version": "1.0.0",
+  "description": "simple web application for sharing photos",
+  "main": "index.js",
+  "repository": {
+    "url": "https://github.com/SeanML/familyphotos.git",
+    "type": "git"
+  },
+  "author": "seanml",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.14.0"
+  },
+  "devDependencies": {
+    "webpack": "^1.14.0"
+  }
+}
