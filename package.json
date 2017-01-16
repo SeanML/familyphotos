@@ -7,13 +7,23 @@
     "url": "https://github.com/SeanML/familyphotos.git",
     "type": "git"
   },
+  "scripts": {
+    "webpack-watch": "./node_modules/webpack/bin/webpack.js -w",
+    "webpack": "./node_modules/webpack/bin/webpack.js",
+    "express-server": "nodemon ./server/server.js",
+    "start": "npm run express-server",
+    "dev": "concurrently --kill-others \"npm run webpack-watch\" \"npm run express-server\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "author": "seanml",
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.15.2",
+    "concurrently": "^3.1.0",
     "cors": "^2.8.1",
     "express": "^4.14.0",
     "moment": "^2.17.1",
+    "nodemon": "^1.11.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.2",
