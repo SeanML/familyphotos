@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const path = require('path');
+const moment = require('moment');
 
 const app = express();
 
@@ -19,4 +20,5 @@ app.get('*', (req, res) => {
 
 app.listen(port, () => {
   console.log('Server is listening on port: ', port);
+  console.log('The current time is: ', moment().format('h:mm:ss a'));
 });
