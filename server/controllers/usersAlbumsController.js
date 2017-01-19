@@ -1,0 +1,1 @@
+const UsersAlbums = require('../models/usersAlbums');

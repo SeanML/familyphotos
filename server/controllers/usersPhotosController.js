@@ -1,0 +1,1 @@
+const UsersPhotos = require('../models/usersPhotos');
