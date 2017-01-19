@@ -4,6 +4,7 @@ const cors = require('cors');
 const path = require('path');
 const moment = require('moment');
 const authRoutes = require('./routes/auth');
+const controllers = require('./controllers/index');
 
 const app = express();
 
