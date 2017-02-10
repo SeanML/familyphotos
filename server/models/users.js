@@ -1,6 +1,8 @@
+const bcrypt = require('bcrypt');
+
 module.exports = (sequelize, DataType) => {
-  return sequelize.define('users', {
-      firstName: {
+  let Users = sequelize.define('users', {
+    firstName: {
       type: DataType.STRING,
       unique: false,
       allowNull: false
@@ -21,4 +23,10 @@ module.exports = (sequelize, DataType) => {
       allowNull: false
     }
   });
+
+  Users.comparePassword = (password, callback) => {
+    bcrypt.compare(password, this.password, callback);
+  };
+
+  return Users;
 };

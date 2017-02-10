@@ -5,6 +5,13 @@ import axios from 'axios';
 export default class LoginPage extends Component {
   constructor(props) {
     super(props);
+    const storedMessage = localStorage.getItem('successMessage');
+    let successMessage = '';
+    if(storedMessage) {
+      successMessage = storedMessage;
+      localStorage.removeItem('successMessage');
+    }
+
     this.state = {
       errors: {},
       user: {
@@ -31,9 +38,12 @@ export default class LoginPage extends Component {
         errors: {}
       });
       console.log('Logged in successfully!');
+      Auth.authenticateUser(resp.data.token);
+      this.context.router.replace('/');
     })
     .catch(errors => {
-      errors = errors.response.data;
+      errors = errors.response.data ? errors.response.data : {};
+      errors.summary = errors.response.data.message;
       this.setState({
         errors
       });
