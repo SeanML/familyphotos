@@ -1,14 +1,22 @@
 import Base from './components/Base';
 import Home from './components/Home';
+import DashboardPage from './containers/DashboardPage';
 import LoginPage from './containers/LoginPage';
 import SignUpPage from './containers/SignUpPage';
+import Auth from './modules/Auth';
 
 const routes = {
   component: Base,
   childRoutes: [
     {
       path: '/',
-      component: Home
+      getComponent: (location, callback) => {
+        if(Auth.isUserAuthenticated()) {
+          callback(null, DashboardPage);
+        } else {
+          callback(null, Home);
+        }
+      }
     },
     {
       path: '/login',
@@ -17,6 +25,13 @@ const routes = {
     {
       path: '/signup',
       component: SignUpPage
+    },
+    {
+      path: '/logout',
+      onEnter: (nextState, replace) => {
+        Auth.deauthenticateUser();
+        replace('/');
+      }
     }
   ]
 };

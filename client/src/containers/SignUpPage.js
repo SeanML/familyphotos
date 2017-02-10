@@ -42,6 +42,8 @@ export default class SignUpPage extends Component {
         errors: {}
       });
       console.log('Sign up successful!');
+      localStorage.setItem('successMessage', resp.data.message);
+      this.context.router.replace('/login');
     })
     .catch(errors => {
       errors = errors.response.data;
